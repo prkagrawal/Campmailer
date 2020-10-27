@@ -1,8 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
-require("./services/passport");
+
+// Here the order of files is IMPORTANT
 require("./models/User");
+require("./services/passport");
 
 mongoose.connect(keys.mongoURI);
 
