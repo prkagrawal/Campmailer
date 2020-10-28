@@ -21,7 +21,13 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
+      // a relative path in the callback causes the https to drop to http in the auth flow
+      // Some of the solutions here - 
+      // 1. Hardcode the complete path.
+      // 2. Put the callback url in env file and import it according to the environment (obviously complete path) 
+      // 2. Provide additional options (proxy: true) to tell GoogleStrategy to trust all the proxies that it encounters between browser request and our server.
+      callbackURL: '/auth/google/callback',
+      proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleId: profile.id })
