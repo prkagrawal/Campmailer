@@ -8,7 +8,9 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const store = createStore(() => [], {}, applyMiddleware());
+import reducers from './redux/reducers';
+
+const store = createStore(reducers, {}, applyMiddleware());
 
 ReactDOM.render(
   <React.StrictMode>
