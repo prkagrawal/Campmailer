@@ -3,35 +3,19 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import './App.css';
 
-const Header = () => {
-  return (
-    <h2>Header</h2>
-  );
-}
-
-const Dashboard = () => {
-  return (
-    <h2>Dasboard</h2>
-  );
-}
-
-const SurveyNew = () => {
-  return (
-    <h2>SurveyNew</h2>
-  );
-}
-
-const Landing = () => {
-  return (
-    <h2>Landing</h2>
-  );
-}
+import Header from './components/Header';
+import Landing from './components/Landing';
+import Dashboard from './components/Dashboard';
+import SurveyNew from './components/surveys/SurveyNew';
 
 function App() {
   return (
     <BrowserRouter>
       <div>
-        <Route path="/" component={Landing} />
+        <Header />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/surveys" component={Dashboard} />
+        <Route path="/surveys/new" component={SurveyNew} />
       </div>
     </BrowserRouter>
   );
