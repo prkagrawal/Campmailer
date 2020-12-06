@@ -5,7 +5,11 @@ module.exports = (app) => {
     scope: ['profile', 'email']
   }));
 
-  app.get('/auth/google/callback', passport.authenticate('google'));
+  app.get('/auth/google/callback', passport.authenticate('google'),
+  (req, res) => {
+    // Redirect the user to the dashboard after logged in
+    res.redirect("/surveys");
+  });
 
   app.get('/api/logout', (req, res) => {
   	// Passport automatically attaches user to the req object with some other funtions.
