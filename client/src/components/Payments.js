@@ -8,10 +8,14 @@ class Payments extends Component {
     // token: A callback function that will be called after we received an authorized token from Stripe API.
     return (
       <StripeCheckout
+        name="Emaily"
+        description="This is a full stack application"
         amount={500}
         token={token => console.log(token)}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}
-      />
+      >
+        <button className="btn">Add Credits</button>
+      </StripeCheckout>
     );
   }
 }
