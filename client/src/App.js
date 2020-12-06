@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import { React, Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import './App.css';
 
-import { connect } from "react-redux";
-import * as actions from "../actions";
+import { connect } from 'react-redux';
+import * as actions from './redux/actions';
 
 import Header from './components/Header';
 import Landing from './components/Landing';

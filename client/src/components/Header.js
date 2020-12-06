@@ -6,9 +6,19 @@ import { connect } from 'react-redux';
 class Header extends Component {
   renderContent() {
     switch (this.props.auth) {
-      case null: return "Still deciding...";
-      case false: return "I'm logged out.";
-      default: return "I'm logged in.";
+      case null: return;
+      case false:
+        return (
+          <li>
+            <a href="/auth/google">Login with Google</a>
+          </li>
+        );
+      default:
+        return (
+          <li>
+            <a href="/api/logout">Logout</a>
+          </li>
+        );
     }
   }
 
