@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+
 class Header extends Component {
+  renderContent() {
+    switch (this.props.auth) {
+      case null: return "Still deciding...";
+      case false: return "I'm logged out.";
+      default: return "I'm logged in.";
+    }
+  }
+
   render() {
     return (
       <nav>
@@ -12,13 +22,15 @@ class Header extends Component {
           >
             Emaily
           </Link>
-          <ul className="right">
-            nav links
-          </ul>
+          <ul className="right">{this.renderContent()}</ul>
         </div>
       </nav>
     );
   }
 }
 
-export default Header;
+function mapStateToProps(state) {
+  return { auth: state.auth };
+}
+
+export default connect(mapStateToProps)(Header);
